@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CC44189216ED32D00BF19B0 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC44188216ED32D00BF19B0 /* GradientView.swift */; };
 		0CFDD73F216A91310016373D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFDD73E216A91310016373D /* AppDelegate.swift */; };
 		0CFDD741216A91310016373D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFDD740216A91310016373D /* ViewController.swift */; };
 		0CFDD744216A91310016373D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CFDD742216A91310016373D /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0CC44188216ED32D00BF19B0 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		0CFDD73B216A91310016373D /* hitch-hiker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hitch-hiker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CFDD73E216A91310016373D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CFDD740216A91310016373D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -40,6 +42,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0CC44185216ED1B600BF19B0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0CFDD740216A91310016373D /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0CC44186216ED1C300BF19B0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0CC44188216ED32D00BF19B0 /* GradientView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0CC44187216ED1CB00BF19B0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		0CFDD732216A91310016373D = {
 			isa = PBXGroup;
 			children = (
@@ -61,8 +86,10 @@
 		0CFDD73D216A91310016373D /* hitch-hiker */ = {
 			isa = PBXGroup;
 			children = (
+				0CC44187216ED1CB00BF19B0 /* Model */,
+				0CC44186216ED1C300BF19B0 /* View */,
+				0CC44185216ED1B600BF19B0 /* Controller */,
 				0CFDD73E216A91310016373D /* AppDelegate.swift */,
-				0CFDD740216A91310016373D /* ViewController.swift */,
 				0CFDD742216A91310016373D /* Main.storyboard */,
 				0CFDD745216A91320016373D /* Assets.xcassets */,
 				0CFDD747216A91320016373D /* LaunchScreen.storyboard */,
@@ -168,7 +195,6 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-hitch-hiker/Pods-hitch-hiker-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/RevealingSplashView/RevealingSplashView.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -178,7 +204,6 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealingSplashView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -218,6 +243,7 @@
 			files = (
 				0CFDD741216A91310016373D /* ViewController.swift in Sources */,
 				0CFDD73F216A91310016373D /* AppDelegate.swift in Sources */,
+				0CC44189216ED32D00BF19B0 /* GradientView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
