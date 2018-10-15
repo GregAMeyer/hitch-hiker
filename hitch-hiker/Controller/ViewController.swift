@@ -13,6 +13,11 @@ class ViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var gradientView: GradientView!
+    @IBOutlet weak var actionBtn: RoundedShadowButton!
+    
+    @IBAction func actionButtonWasPressed(_ sender: Any) {
+        actionBtn.animateButton(shouldLoad: true, withMessage: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
