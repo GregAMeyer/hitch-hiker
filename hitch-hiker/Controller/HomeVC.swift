@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeVC.swift
 //  hitch-hiker
 //
 //  Created by Gregory Meyer on 10/7/18.
@@ -9,7 +9,9 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController, MKMapViewDelegate {
+class HomeVC: UIViewController, MKMapViewDelegate {
+    
+    var delegate: CenterVCDelegate?
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var gradientView: GradientView!
@@ -17,6 +19,9 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     @IBAction func actionButtonWasPressed(_ sender: Any) {
         actionBtn.animateButton(shouldLoad: true, withMessage: nil)
+    }
+    @IBAction func menuButtonWasPressed(_ sender: Any) {
+        delegate?.toggleLeftPanel()
     }
     
     override func viewDidLoad() {
