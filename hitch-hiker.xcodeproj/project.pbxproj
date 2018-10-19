@@ -15,6 +15,7 @@
 		0CC4419321756BCD00BF19B0 /* LeftSidePanelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC4419221756BCD00BF19B0 /* LeftSidePanelVC.swift */; };
 		0CC4419521756C9100BF19B0 /* ContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC4419421756C9100BF19B0 /* ContainerVC.swift */; };
 		0CC4419821756F0F00BF19B0 /* CenterVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC4419721756F0F00BF19B0 /* CenterVCDelegate.swift */; };
+		0CC4419B2179635600BF19B0 /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC4419A2179635600BF19B0 /* UIViewExt.swift */; };
 		0CFDD73F216A91310016373D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFDD73E216A91310016373D /* AppDelegate.swift */; };
 		0CFDD741216A91310016373D /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFDD740216A91310016373D /* HomeVC.swift */; };
 		0CFDD744216A91310016373D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CFDD742216A91310016373D /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 		0CC4419221756BCD00BF19B0 /* LeftSidePanelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftSidePanelVC.swift; sourceTree = "<group>"; };
 		0CC4419421756C9100BF19B0 /* ContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerVC.swift; sourceTree = "<group>"; };
 		0CC4419721756F0F00BF19B0 /* CenterVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterVCDelegate.swift; sourceTree = "<group>"; };
+		0CC4419A2179635600BF19B0 /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
 		0CFDD73B216A91310016373D /* hitch-hiker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hitch-hiker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CFDD73E216A91310016373D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CFDD740216A91310016373D /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -93,6 +95,14 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		0CC441992179633D00BF19B0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0CC4419A2179635600BF19B0 /* UIViewExt.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		0CFDD732216A91310016373D = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +124,7 @@
 		0CFDD73D216A91310016373D /* hitch-hiker */ = {
 			isa = PBXGroup;
 			children = (
+				0CC441992179633D00BF19B0 /* Extensions */,
 				0CC4419621756EEB00BF19B0 /* Protocols */,
 				0CC44187216ED1CB00BF19B0 /* Model */,
 				0CC44186216ED1C300BF19B0 /* View */,
@@ -275,6 +286,7 @@
 				0CC44191217406F700BF19B0 /* RoundedShadowButton.swift in Sources */,
 				0CC4419321756BCD00BF19B0 /* LeftSidePanelVC.swift in Sources */,
 				0CC4418F2174048E00BF19B0 /* CircleView.swift in Sources */,
+				0CC4419B2179635600BF19B0 /* UIViewExt.swift in Sources */,
 				0CFDD741216A91310016373D /* HomeVC.swift in Sources */,
 				0CC4418B2173FEB000BF19B0 /* RoundImageView.swift in Sources */,
 				0CC4418D2174026600BF19B0 /* RoundedShadowView.swift in Sources */,
