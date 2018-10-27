@@ -15,7 +15,6 @@ class GradientView: UIView {
     //runs after everything loads from interface builder
     //use to display view changes
     override func awakeFromNib() {
-        print("awakeFromNib")
         setupGradientView()
     }
     
@@ -26,10 +25,6 @@ class GradientView: UIView {
         //so it should be the same size of the UIView it is on top of
         print("setting up gradient")
         gradient.frame = self.bounds
-        print("gradient.frame", gradient.frame)
-        print("self.bounds", self.bounds)
-        print("self.bounds.size", self.bounds.size)
-        print("self.bounds.size.width", self.bounds.size.width)
         gradient.colors = [
             UIColor.white.cgColor,
             UIColor.init(white: 1.0, alpha: 0.0).cgColor

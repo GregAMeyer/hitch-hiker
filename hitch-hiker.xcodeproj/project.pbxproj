@@ -16,6 +16,8 @@
 		0CC4419521756C9100BF19B0 /* ContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC4419421756C9100BF19B0 /* ContainerVC.swift */; };
 		0CC4419821756F0F00BF19B0 /* CenterVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC4419721756F0F00BF19B0 /* CenterVCDelegate.swift */; };
 		0CC4419B2179635600BF19B0 /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC4419A2179635600BF19B0 /* UIViewExt.swift */; };
+		0CDE81712180E4A000F82FEC /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDE81702180E4A000F82FEC /* LoginVC.swift */; };
+		0CDE81732180E81400F82FEC /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDE81722180E81400F82FEC /* RoundedTextField.swift */; };
 		0CFDD73F216A91310016373D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFDD73E216A91310016373D /* AppDelegate.swift */; };
 		0CFDD741216A91310016373D /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFDD740216A91310016373D /* HomeVC.swift */; };
 		0CFDD744216A91310016373D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CFDD742216A91310016373D /* Main.storyboard */; };
@@ -34,6 +36,8 @@
 		0CC4419421756C9100BF19B0 /* ContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerVC.swift; sourceTree = "<group>"; };
 		0CC4419721756F0F00BF19B0 /* CenterVCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterVCDelegate.swift; sourceTree = "<group>"; };
 		0CC4419A2179635600BF19B0 /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
+		0CDE81702180E4A000F82FEC /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		0CDE81722180E81400F82FEC /* RoundedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
 		0CFDD73B216A91310016373D /* hitch-hiker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hitch-hiker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CFDD73E216A91310016373D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CFDD740216A91310016373D /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -64,6 +68,7 @@
 				0CFDD740216A91310016373D /* HomeVC.swift */,
 				0CC4419221756BCD00BF19B0 /* LeftSidePanelVC.swift */,
 				0CC4419421756C9100BF19B0 /* ContainerVC.swift */,
+				0CDE81702180E4A000F82FEC /* LoginVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -76,6 +81,7 @@
 				0CC4418C2174026600BF19B0 /* RoundedShadowView.swift */,
 				0CC4418E2174048E00BF19B0 /* CircleView.swift */,
 				0CC44190217406F700BF19B0 /* RoundedShadowButton.swift */,
+				0CDE81722180E81400F82FEC /* RoundedTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -283,6 +289,8 @@
 			files = (
 				0CC4419521756C9100BF19B0 /* ContainerVC.swift in Sources */,
 				0CC4419821756F0F00BF19B0 /* CenterVCDelegate.swift in Sources */,
+				0CDE81712180E4A000F82FEC /* LoginVC.swift in Sources */,
+				0CDE81732180E81400F82FEC /* RoundedTextField.swift in Sources */,
 				0CC44191217406F700BF19B0 /* RoundedShadowButton.swift in Sources */,
 				0CC4419321756BCD00BF19B0 /* LeftSidePanelVC.swift in Sources */,
 				0CC4418F2174048E00BF19B0 /* CircleView.swift in Sources */,
