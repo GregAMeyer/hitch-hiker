@@ -8,10 +8,17 @@
 
 import UIKit
 import MapKit
+import RevealingSplashView
 
 class HomeVC: UIViewController, MKMapViewDelegate {
     
     var delegate: CenterVCDelegate?
+    
+    let revealingSplashView = RevealingSplashView(
+        iconImage: UIImage(named: "launchScreenIcon")!,
+        iconInitialSize: CGSize(width: 80, height: 80),
+        backgroundColor: UIColor.white
+    )
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var gradientView: GradientView!
@@ -29,6 +36,11 @@ class HomeVC: UIViewController, MKMapViewDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         mapView.delegate = self
         gradientView.setupGradientView()
+        self.view.addSubview(revealingSplashView)
+        revealingSplashView.animationType = SplashAnimationType.heartBeat
+        revealingSplashView.startAnimation()
+        
+        revealingSplashView.heartAttack = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
