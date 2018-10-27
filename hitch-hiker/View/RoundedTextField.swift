@@ -40,7 +40,6 @@ class RoundedTextField: UITextField {
                      y: 0,// + (textRectOffset/2),
                      width: self.frame.width - textRectOffset,
                      height: self.frame.height)// + textRectOffset)
-//        return getRectForTextField()
     }
 
 }

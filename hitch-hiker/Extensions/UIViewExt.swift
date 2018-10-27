@@ -8,6 +8,7 @@
 
 import UIKit
 extension UIView {
+    
     func fadeTo(alphaValue: CGFloat, withDuration duration: TimeInterval) {
         UIView.animate(withDuration: duration) {
             self.alpha = alphaValue
@@ -30,9 +31,12 @@ extension UIView {
         
         let deltaY = targetFrame.origin.y - curveFrame.origin.y
         
-        UIView.animateKeyframes(withDuration: duration, delay: 0, options: UIView.KeyframeAnimationOptions(rawValue: curve), animations: {
-            self.frame.origin.y += deltaY
-        }, completion: nil)
+        UIView.animateKeyframes(withDuration: duration,
+                                delay: 0,
+                                options: UIView.KeyframeAnimationOptions(rawValue: curve),
+                                animations: {
+                                    self.frame.origin.y += deltaY
+                                }, completion: nil)
 
     }
 }
