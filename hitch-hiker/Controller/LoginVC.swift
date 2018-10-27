@@ -15,6 +15,14 @@ class LoginVC: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         view.bindToKeyboard()
+        
+        let tap = UITapGestureRecognizer(target: self,
+                                         action: #selector(handleScreenTap(sender:)))
+        self.view.addGestureRecognizer(tap)
+    }
+    
+    @objc func handleScreenTap(sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
     }
     
     @IBAction func cancelButtonWasPressed(_ sender: Any) {
