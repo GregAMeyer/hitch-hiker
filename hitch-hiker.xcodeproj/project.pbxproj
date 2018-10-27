@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C2CFDCB2184F1C2003EFE75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C2CFDCA2184F1C1003EFE75 /* GoogleService-Info.plist */; };
+		0C2CFDCE2184F448003EFE75 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2CFDCD2184F448003EFE75 /* DataService.swift */; };
 		0CC44189216ED32D00BF19B0 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC44188216ED32D00BF19B0 /* GradientView.swift */; };
 		0CC4418B2173FEB000BF19B0 /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC4418A2173FEB000BF19B0 /* RoundImageView.swift */; };
 		0CC4418D2174026600BF19B0 /* RoundedShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC4418C2174026600BF19B0 /* RoundedShadowView.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C2CFDCA2184F1C1003EFE75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0C2CFDCD2184F448003EFE75 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		0CC44188216ED32D00BF19B0 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		0CC4418A2173FEB000BF19B0 /* RoundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundImageView.swift; sourceTree = "<group>"; };
 		0CC4418C2174026600BF19B0 /* RoundedShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowView.swift; sourceTree = "<group>"; };
@@ -62,6 +66,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C2CFDCC2184F420003EFE75 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0C2CFDCD2184F448003EFE75 /* DataService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		0CC44185216ED1B600BF19B0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +142,7 @@
 		0CFDD73D216A91310016373D /* hitch-hiker */ = {
 			isa = PBXGroup;
 			children = (
+				0C2CFDCC2184F420003EFE75 /* Services */,
 				0CC441992179633D00BF19B0 /* Extensions */,
 				0CC4419621756EEB00BF19B0 /* Protocols */,
 				0CC44187216ED1CB00BF19B0 /* Model */,
@@ -140,6 +153,7 @@
 				0CFDD745216A91320016373D /* Assets.xcassets */,
 				0CFDD747216A91320016373D /* LaunchScreen.storyboard */,
 				0CFDD74A216A91320016373D /* Info.plist */,
+				0C2CFDCA2184F1C1003EFE75 /* GoogleService-Info.plist */,
 			);
 			path = "hitch-hiker";
 			sourceTree = "<group>";
@@ -222,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CFDD749216A91320016373D /* LaunchScreen.storyboard in Resources */,
+				0C2CFDCB2184F1C2003EFE75 /* GoogleService-Info.plist in Resources */,
 				0CFDD746216A91320016373D /* Assets.xcassets in Resources */,
 				0CFDD744216A91310016373D /* Main.storyboard in Resources */,
 			);
@@ -290,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CC4419521756C9100BF19B0 /* ContainerVC.swift in Sources */,
+				0C2CFDCE2184F448003EFE75 /* DataService.swift in Sources */,
 				0CC4419821756F0F00BF19B0 /* CenterVCDelegate.swift in Sources */,
 				0CDE81712180E4A000F82FEC /* LoginVC.swift in Sources */,
 				0CDE81732180E81400F82FEC /* RoundedTextField.swift in Sources */,
