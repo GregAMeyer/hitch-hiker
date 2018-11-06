@@ -67,45 +67,52 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                         self.dismiss(animated: true, completion: nil)
                     }
                     else { //error != nil
+                        //errors from signIn, before createUser
+                        if let errorCode = AuthErrorCode(rawValue: error!._code) {
+                            switch errorCode {
+                            case .wrongPassword:
+                                print("Whoops! Wrong password...")
+                            default:
+                                print("An error has occurred signing in with that email...")
+                            }
+                        }
+                        
                         Auth.auth().createUser(
                             withEmail: email,
                             password: password,
                             completion: { (authResult, error) in
                             if error != nil {
+                                //errors from createUser
                                 if let errorCode = AuthErrorCode(rawValue: error!._code) {
                                     switch errorCode {
                                     case .invalidEmail:
                                         print("Email invalid. Please try again.")
-                                    case .emailAlreadyInUse:
-                                        print("Email already in use by another account.")
-                                    case .wrongPassword:
-                                        print("Whoops!... wrong password.")
                                     default:
-                                        print("An error")
+                                        print("An error has occurred creating that user...")
                                     }
                                 }
-                                else {
-                                    if let user = authResult?.user {
-                                        if self.segmentedControl.selectedSegmentIndex == 0 {
-                                            let userData = ["provider": user.providerID] as [String: Any]
-                                            DataService.instance.createFirebaseDBUser(
-                                                uid: user.uid,
-                                                userData: userData,
-                                                isDriver: false)
-                                        }
-                                        else {
-                                            let userData = ["provider": user.providerID,
-                                                            "userIsDriver": true,
-                                                            "isPickupModeEnabled": false,
-                                                            "driverIsOnTrip": false] as [String: Any]
-                                            DataService.instance.createFirebaseDBUser(
-                                                uid: user.uid,
-                                                userData: userData,
-                                                isDriver: true)
-                                        }
-                                        print("Successfully created a new user with Firebase")
-                                        self.dismiss(animated: true, completion: nil)
+                            }
+                            else {
+                                if let user = authResult?.user {
+                                    if self.segmentedControl.selectedSegmentIndex == 0 {
+                                        let userData = ["provider": user.providerID] as [String: Any]
+                                        DataService.instance.createFirebaseDBUser(
+                                            uid: user.uid,
+                                            userData: userData,
+                                            isDriver: false)
                                     }
+                                    else {
+                                        let userData = ["provider": user.providerID,
+                                                        "userIsDriver": true,
+                                                        "isPickupModeEnabled": false,
+                                                        "driverIsOnTrip": false] as [String: Any]
+                                        DataService.instance.createFirebaseDBUser(
+                                            uid: user.uid,
+                                            userData: userData,
+                                            isDriver: true)
+                                    }
+                                    print("Successfully created a new user with Firebase")
+                                    self.dismiss(animated: true, completion: nil)
                                 }
                             }
                         })
