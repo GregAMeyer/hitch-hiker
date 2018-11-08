@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C2CFDCB2184F1C2003EFE75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C2CFDCA2184F1C1003EFE75 /* GoogleService-Info.plist */; };
 		0C2CFDCE2184F448003EFE75 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2CFDCD2184F448003EFE75 /* DataService.swift */; };
+		0C5463452193BC3600E5A640 /* UpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5463442193BC3600E5A640 /* UpdateService.swift */; };
 		0CC44189216ED32D00BF19B0 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC44188216ED32D00BF19B0 /* GradientView.swift */; };
 		0CC4418B2173FEB000BF19B0 /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC4418A2173FEB000BF19B0 /* RoundImageView.swift */; };
 		0CC4418D2174026600BF19B0 /* RoundedShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC4418C2174026600BF19B0 /* RoundedShadowView.swift */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		0C2CFDCA2184F1C1003EFE75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0C2CFDCD2184F448003EFE75 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		0C5463442193BC3600E5A640 /* UpdateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateService.swift; sourceTree = "<group>"; };
 		0CC44188216ED32D00BF19B0 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		0CC4418A2173FEB000BF19B0 /* RoundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundImageView.swift; sourceTree = "<group>"; };
 		0CC4418C2174026600BF19B0 /* RoundedShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowView.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				0C2CFDCD2184F448003EFE75 /* DataService.swift */,
+				0C5463442193BC3600E5A640 /* UpdateService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				0CC4419321756BCD00BF19B0 /* LeftSidePanelVC.swift in Sources */,
 				0CC4418F2174048E00BF19B0 /* CircleView.swift in Sources */,
 				0CC4419B2179635600BF19B0 /* UIViewExt.swift in Sources */,
+				0C5463452193BC3600E5A640 /* UpdateService.swift in Sources */,
 				0CFDD741216A91310016373D /* HomeVC.swift in Sources */,
 				0CC4418B2173FEB000BF19B0 /* RoundImageView.swift in Sources */,
 				0CC4418D2174026600BF19B0 /* RoundedShadowView.swift in Sources */,

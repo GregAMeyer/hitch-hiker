@@ -9,10 +9,14 @@
 import UIKit
 import MapKit
 import RevealingSplashView
+import CoreLocation
 
 class HomeVC: UIViewController, MKMapViewDelegate {
     
     var delegate: CenterVCDelegate?
+    
+    var manager: CLLocationManager?
+    var regionRadius: CLLocationDistance = 1000
     
     let revealingSplashView = RevealingSplashView(
         iconImage: UIImage(named: "launchScreenIcon")!,
@@ -30,17 +34,46 @@ class HomeVC: UIViewController, MKMapViewDelegate {
     @IBAction func menuButtonWasPressed(_ sender: Any) {
         delegate?.toggleLeftPanel()
     }
+    @IBAction func centerMapButtonWasPressed(_ sender: Any) {
+        centerMapOnUSerLocation()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        manager = CLLocationManager()
+        manager?.delegate = self
+        manager?.desiredAccuracy = kCLLocationAccuracyBest
+        
+        checkLocationAuthStatus()
+        
         mapView.delegate = self
+        
+        centerMapOnUSerLocation()
+        
         gradientView.setupGradientView()
+        
         self.view.addSubview(revealingSplashView)
         revealingSplashView.animationType = SplashAnimationType.heartBeat
         revealingSplashView.startAnimation()
-        
         revealingSplashView.heartAttack = true
+    }
+    
+    func checkLocationAuthStatus() {
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            manager?.startUpdatingLocation()
+        }
+        else {
+            manager?.requestWhenInUseAuthorization()
+        }
+    }
+    
+    func centerMapOnUSerLocation() {
+        let coordinateRegion = MKCoordinateRegion(
+            center: mapView.userLocation.coordinate,
+            latitudinalMeters: regionRadius * 2.0,
+            longitudinalMeters: regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -48,5 +81,15 @@ class HomeVC: UIViewController, MKMapViewDelegate {
     }
     
 
+}
+
+extension HomeVC: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+//            checkLocationAuthStatus()
+            mapView.showsUserLocation = true
+            mapView.userTrackingMode = .follow
+        }
+    }
 }
 
