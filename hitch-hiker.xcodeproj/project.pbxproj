@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C2602252197336E00AE59F7 /* DriverAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2602242197336E00AE59F7 /* DriverAnnotation.swift */; };
 		0C2CFDCB2184F1C2003EFE75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C2CFDCA2184F1C1003EFE75 /* GoogleService-Info.plist */; };
 		0C2CFDCE2184F448003EFE75 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2CFDCD2184F448003EFE75 /* DataService.swift */; };
 		0C5463452193BC3600E5A640 /* UpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5463442193BC3600E5A640 /* UpdateService.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C2602242197336E00AE59F7 /* DriverAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverAnnotation.swift; sourceTree = "<group>"; };
 		0C2CFDCA2184F1C1003EFE75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0C2CFDCD2184F448003EFE75 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		0C5463442193BC3600E5A640 /* UpdateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateService.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				0CC4418E2174048E00BF19B0 /* CircleView.swift */,
 				0CC44190217406F700BF19B0 /* RoundedShadowButton.swift */,
 				0CDE81722180E81400F82FEC /* RoundedTextField.swift */,
+				0C2602242197336E00AE59F7 /* DriverAnnotation.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				0CC44191217406F700BF19B0 /* RoundedShadowButton.swift in Sources */,
 				0CC4419321756BCD00BF19B0 /* LeftSidePanelVC.swift in Sources */,
 				0CC4418F2174048E00BF19B0 /* CircleView.swift in Sources */,
+				0C2602252197336E00AE59F7 /* DriverAnnotation.swift in Sources */,
 				0CC4419B2179635600BF19B0 /* UIViewExt.swift in Sources */,
 				0C5463452193BC3600E5A640 /* UpdateService.swift in Sources */,
 				0CFDD741216A91310016373D /* HomeVC.swift in Sources */,
