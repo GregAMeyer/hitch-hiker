@@ -95,23 +95,28 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                             else {
                                 if let user = authResult?.user {
                                     if self.segmentedControl.selectedSegmentIndex == 0 {
-                                        let userData = ["provider": user.providerID] as [String: Any]
+                                        let userData = [
+                                            "provider": user.providerID
+                                        ] as [String: Any]
                                         DataService.instance.createFirebaseDBUser(
                                             uid: user.uid,
                                             userData: userData,
                                             isDriver: false)
+                                        print("Successfully created a new USER with Firebase")
                                     }
                                     else {
-                                        let userData = ["provider": user.providerID,
-                                                        "userIsDriver": true,
-                                                        "isPickupModeEnabled": false,
-                                                        "driverIsOnTrip": false] as [String: Any]
+                                        let driverData = [
+                                            "provider": user.providerID,
+                                            "userIsDriver": true,
+                                            "isPickupModeEnabled": false,
+                                            "driverIsOnTrip": false
+                                        ] as [String: Any]
                                         DataService.instance.createFirebaseDBUser(
                                             uid: user.uid,
-                                            userData: userData,
+                                            userData: driverData,
                                             isDriver: true)
+                                        print("Successfully created a new DRIVER with Firebase")
                                     }
-                                    print("Successfully created a new user with Firebase")
                                     self.dismiss(animated: true, completion: nil)
                                 }
                             }

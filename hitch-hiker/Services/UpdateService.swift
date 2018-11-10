@@ -29,13 +29,13 @@ class UpdateService {
         })
     }
     
-    func updateDriverLocaiton(withCoordinate coordinate: CLLocationCoordinate2D) {
+    func updateDriverLocation(withCoordinate coordinate: CLLocationCoordinate2D) {
         DataService.instance.REF_DRIVERS.observeSingleEvent(of: .value, with: { (dataSnapshot) in
             if let driverSnapshot = dataSnapshot.children.allObjects as? [DataSnapshot] {
                 for driver in driverSnapshot {
                     if driver.key == Auth.auth().currentUser?.uid {
-                        if driver.childSnapshot(forPath: "isPickpModeEnabled").value as? Bool == true {
-                            DataService.instance.REF_USERS
+                        if driver.childSnapshot(forPath: "isPickupModeEnabled").value as? Bool == true {
+                            DataService.instance.REF_DRIVERS
                             .child(driver.key)
                             .updateChildValues(["coordinate": [coordinate.latitude, coordinate.longitude]])
                         }

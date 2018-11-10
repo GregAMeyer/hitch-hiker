@@ -18,7 +18,7 @@ class LeftSidePanelVC: UIViewController {
     @IBOutlet weak var pickupModeLbl: UILabel!
     @IBOutlet weak var pickupModeSwitch: UISwitch!
     
-    let currentUserId = Auth.auth().currentUser?.uid
+    var currentUserId = Auth.auth().currentUser?.uid
     let appDelegate = AppDelegate.getAppDelegate()
     
     override func viewDidLoad() {
@@ -46,6 +46,12 @@ class LeftSidePanelVC: UIViewController {
         }
     }
     
+    func updateCurrentUserId() {
+        if self.currentUserId == nil {
+            self.currentUserId = Auth.auth().currentUser?.uid
+        }
+    }
+    
     func observePassengersAndDrivers() {
         //watch firebase db
         DataService.instance.REF_USERS.observeSingleEvent(of: .value, with: { (DataSnapshot) in
@@ -53,6 +59,9 @@ class LeftSidePanelVC: UIViewController {
                 for obj in snapshot {
                     if obj.key == Auth.auth().currentUser?.uid {
                         self.userAccountTypeLbl.text = "PASSENGER"
+                        self.pickupModeSwitch.isHidden = true
+                        self.pickupModeLbl.isHidden = true
+                        self.pickupModeSwitch.isHidden = true
                     }
                 }
             }
@@ -75,6 +84,8 @@ class LeftSidePanelVC: UIViewController {
     }
     
     @IBAction func switchWasToggled(_ sender: Any) {
+        updateCurrentUserId()
+        //should figure out way to update current user after sign in/up
         if pickupModeSwitch.isOn {
             pickupModeLbl.text = "PICKUP MODE ENABLED"
             appDelegate.MenuContainerVC.toggleLeftPanel()
