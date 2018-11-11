@@ -24,11 +24,13 @@ class HomeVC: UIViewController {
         iconInitialSize: CGSize(width: 80, height: 80),
         backgroundColor: UIColor.white
     )
+    var tableView = UITableView()
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var gradientView: GradientView!
     @IBOutlet weak var actionBtn: RoundedShadowButton!
     @IBOutlet weak var centerMapViewBtn: UIButton!
+    @IBOutlet weak var destinationTextField: UITextField!
     
     @IBAction func actionButtonWasPressed(_ sender: Any) {
         actionBtn.animateButton(shouldLoad: true, withMessage: nil)
@@ -51,6 +53,7 @@ class HomeVC: UIViewController {
         checkLocationAuthStatus()
         
         mapView.delegate = self
+        destinationTextField.delegate = self
         
         centerMapOnUSerLocation()
         
@@ -178,3 +181,66 @@ extension HomeVC: MKMapViewDelegate {
     }
 }
 
+extension HomeVC: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == destinationTextField {
+            tableView.frame = CGRect(x: 20,
+                                     y: view.frame.height,
+                                     width: view.frame.width-40,
+                                     height: view.frame.height-160)
+            tableView.layer.cornerRadius = 5.0
+            tableView.register(UITableViewCell.self, forCellReuseIdentifier: "locationCell")
+            
+            tableView.delegate = self
+            tableView.dataSource = self
+            
+            tableView.tag = 18 //arbitrary num to id it
+            tableView.rowHeight = 60
+            
+            view.addSubview(tableView)
+            animateTableView(shouldShow: true)
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+    }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+    
+    func animateTableView(shouldShow: Bool) {
+        if shouldShow {
+            UIView.animate(withDuration: 0.2) {
+                self.tableView.frame = CGRect(x: 20,
+                                              y: 160,
+                                              width: self.view.frame.width-40,
+                                              height: self.view.frame.height-160)
+            }
+        }
+    }
+}
+
+extension HomeVC: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("selected")
+    }
+}
