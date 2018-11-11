@@ -224,6 +224,20 @@ extension HomeVC: UITextFieldDelegate {
                                               height: self.view.frame.height-160)
             }
         }
+        else {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.tableView.frame = CGRect(x: 20,
+                                              y: self.view.frame.height,
+                                              width: self.view.frame.width-40,
+                                              height: self.view.frame.height-160)
+            }) { (finished) in
+                for subview in self.view.subviews {
+                    if subview.tag == 18 {
+                        subview.removeFromSuperview()
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -241,6 +255,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        animateTableView(shouldShow: false)
         print("selected")
     }
 }
