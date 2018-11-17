@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        //if you get an error saying to do this even though you have already done it - https://stackoverflow.com/questions/38250528/firebase-could-not-locate-configuration-file-googleservice-info-plist
+        //just unclick it and reclick it to have xcode re-index
         FirebaseApp.configure()
         
         // Override point for customization after application launch.

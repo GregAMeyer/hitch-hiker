@@ -15,6 +15,7 @@ import Firebase
 class HomeVC: UIViewController {
     
     var delegate: CenterVCDelegate?
+//    var currentUserId = Auth.auth().currentUser?.uid
     
     var manager: CLLocationManager?
     var regionRadius: CLLocationDistance = 1000
@@ -176,6 +177,13 @@ extension HomeVC: MKMapViewDelegate {
             view.image = UIImage(named: "driverAnnotation")
             return view
         }
+        else if let annotation = annotation as? PassengerAnnotation {
+            let identifier = "passenger"
+            var view: MKAnnotationView
+            view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            view.image = UIImage(named: "currentLocationAnnotation")
+            return view
+        }
         return nil
     }
     
@@ -304,6 +312,25 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let passengerCoordinate = manager?.location?.coordinate
+//        let pasengerAnnotation = PassengerAnnotation(coordinate: passengerCoordinate!, key: currentUserId!)
+        let pasengerAnnotation = PassengerAnnotation(coordinate: passengerCoordinate!,
+                                                     key: (Auth.auth().currentUser?.uid)!)
+        
+        mapView.addAnnotation(pasengerAnnotation)
+        
+        destinationTextField.text = tableView.cellForRow(at: indexPath)?.textLabel?.text
+        
+        //temporarily store the selected destination locations coordinate under the user in firebase
+        let selectedMapItem = matchingItems[indexPath.row]
+        DataService.instance.REF_USERS.child((Auth.auth().currentUser?.uid)!)
+            .updateChildValues([
+                "tripCoordinate": [
+                    selectedMapItem.placemark.coordinate.latitude,
+                    selectedMapItem.placemark.coordinate.longitude
+                ]
+            ])
+        
         animateTableView(shouldShow: false)
         print("selected")
     }
