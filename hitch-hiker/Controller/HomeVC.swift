@@ -29,6 +29,7 @@ class HomeVC: UIViewController {
     var tableView = UITableView()
     var matchingItems: [MKMapItem] = [MKMapItem]()
     var selectedItemPlacemark: MKPlacemark? = nil
+    var route: MKRoute!
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var gradientView: GradientView!
@@ -204,6 +205,15 @@ extension HomeVC: MKMapViewDelegate {
         centerMapViewBtn.fadeTo(alphaValue: 1.0, withDuration: 0.2)
     }
     
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        //route has already been defined in searchMapkitForResultsWith...
+        let lineRenderer = MKPolylineRenderer(overlay: self.route.polyline)
+        lineRenderer.strokeColor = UIColor(red: 216/255, green: 71/255, blue: 30/255, alpha: 0.75)
+        lineRenderer.lineWidth = 3
+        
+        return lineRenderer
+    }
+    
     func performSearch() {
         matchingItems.removeAll()
         let request = MKLocalSearch.Request()
@@ -239,6 +249,24 @@ extension HomeVC: MKMapViewDelegate {
         let annotation = MKPointAnnotation()
         annotation.coordinate = placemark.coordinate
         mapView.addAnnotation(annotation)
+    }
+    
+    func searchMapkitForResultsWithPolyline(forMapItem mapItem: MKMapItem) {
+        let request = MKDirections.Request()
+        request.source = MKMapItem.forCurrentLocation()
+        request.destination = mapItem
+        request.transportType = MKDirectionsTransportType.automobile
+        
+        let directions = MKDirections(request: request)
+        directions.calculate { (response, error) in
+            guard let response = response else {
+                print(error.debugDescription)
+                return
+            }
+            self.route = response.routes[0]
+            
+            self.mapView.addOverlay(self.route.polyline)
+        }
     }
 }
 
@@ -359,6 +387,8 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
             ])
         
         dropPinFor(placemark: selectedMapItem.placemark)
+        
+        searchMapkitForResultsWithPolyline(forMapItem: selectedMapItem)
         
         animateTableView(shouldShow: false)
         print("selected")
