@@ -24,13 +24,16 @@ class HomeVC: UIViewController {
         iconInitialSize: CGSize(width: 80, height: 80),
         backgroundColor: UIColor.white
     )
+    
     var tableView = UITableView()
+    var matchingItems: [MKMapItem] = [MKMapItem]()
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var gradientView: GradientView!
     @IBOutlet weak var actionBtn: RoundedShadowButton!
     @IBOutlet weak var centerMapViewBtn: UIButton!
     @IBOutlet weak var destinationTextField: UITextField!
+    @IBOutlet weak var destinationCircle: CircleView!
     
     @IBAction func actionButtonWasPressed(_ sender: Any) {
         actionBtn.animateButton(shouldLoad: true, withMessage: nil)
@@ -39,7 +42,7 @@ class HomeVC: UIViewController {
         delegate?.toggleLeftPanel()
     }
     @IBAction func centerMapButtonWasPressed(_ sender: Any) {
-        centerMapOnUSerLocation()
+        centerMapOnUserLocation()
         centerMapViewBtn.fadeTo(alphaValue: 0.0, withDuration: 0.2)
     }
     
@@ -55,7 +58,7 @@ class HomeVC: UIViewController {
         mapView.delegate = self
         destinationTextField.delegate = self
         
-        centerMapOnUSerLocation()
+        centerMapOnUserLocation()
         
         DataService.instance.REF_DRIVERS.observe(.value, with: { (snapshot) in
             self.loadDriverAnnotatinsFromFB()
@@ -134,7 +137,7 @@ class HomeVC: UIViewController {
         })
     }
     
-    func centerMapOnUSerLocation() {
+    func centerMapOnUserLocation() {
         let coordinateRegion = MKCoordinateRegion(
             center: mapView.userLocation.coordinate,
             latitudinalMeters: regionRadius * 2.0,
@@ -179,6 +182,29 @@ extension HomeVC: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
         centerMapViewBtn.fadeTo(alphaValue: 1.0, withDuration: 0.2)
     }
+    
+    func performSearch() {
+        matchingItems.removeAll()
+        let request = MKLocalSearch.Request()
+        request.naturalLanguageQuery = destinationTextField.text
+        request.region = mapView.region
+        
+        let search = MKLocalSearch(request: request)
+        search.start { (response, error) in
+            if error != nil {
+                print("error from search:", error.debugDescription)
+            }
+            else if response!.mapItems.count == 0 {
+                print("No search results!")
+            }
+            else {
+                for mapItem in response!.mapItems {
+                    self.matchingItems.append(mapItem as MKMapItem)
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
 }
 
 extension HomeVC: UITextFieldDelegate {
@@ -198,22 +224,41 @@ extension HomeVC: UITextFieldDelegate {
             tableView.rowHeight = 60
             
             view.addSubview(tableView)
-            animateTableView(shouldShow: true)
+            animateTableView(shouldShow: true) //might want to stop it from doing this if you have simply re-clicked on text field after hainv a search results already up
+            
+            UIView.animate(withDuration: 0.2) {
+                self.destinationCircle.backgroundColor = UIColor.red
+                self.destinationCircle.borderColor = UIColor.init(red: 199/255, green: 0/255, blue: 0/255, alpha: 1.0)
+            }
         }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == destinationTextField {
+            performSearch()
+            view.endEditing(true)
+        }
         return true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        
+        if textField == destinationTextField {
+            if destinationTextField.text == "" {
+                UIView.animate(withDuration: 0.2) {
+                    self.destinationCircle.backgroundColor = UIColor.lightGray
+                    self.destinationCircle.borderColor = UIColor.darkGray
+                }
+            }
+        }
     }
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        //added attribute clear while editing
+        matchingItems = []
+        tableView.reloadData()
+        centerMapOnUserLocation()
         return true
     }
-    
     
     func animateTableView(shouldShow: Bool) {
         if shouldShow {
@@ -243,7 +288,11 @@ extension HomeVC: UITextFieldDelegate {
 
 extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "locationCell")
+        let mapItem = matchingItems[indexPath.row]
+        cell.textLabel?.text = mapItem.name
+        cell.detailTextLabel?.text = mapItem.placemark.title //address
+        return cell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -251,11 +300,21 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return matchingItems.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         animateTableView(shouldShow: false)
         print("selected")
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        if destinationTextField.text == "" {
+            animateTableView(shouldShow: false)
+        }
     }
 }
