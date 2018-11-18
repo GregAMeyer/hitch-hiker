@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C23241921A08B90001F9BE3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C2CFDCA2184F1C1003EFE75 /* GoogleService-Info.plist */; };
 		0C23241B21A0C934001F9BE3 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C23241A21A0C934001F9BE3 /* UIViewControllerExt.swift */; };
+		0C23241D21A1C0AE001F9BE3 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C23241C21A1C0AE001F9BE3 /* Alertable.swift */; };
 		0C2602252197336E00AE59F7 /* DriverAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2602242197336E00AE59F7 /* DriverAnnotation.swift */; };
 		0C26022721A0733900AE59F7 /* PassengerAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C26022621A0733900AE59F7 /* PassengerAnnotation.swift */; };
 		0C2CFDCE2184F448003EFE75 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2CFDCD2184F448003EFE75 /* DataService.swift */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		0C23241A21A0C934001F9BE3 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
+		0C23241C21A1C0AE001F9BE3 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		0C2602242197336E00AE59F7 /* DriverAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverAnnotation.swift; sourceTree = "<group>"; };
 		0C26022621A0733900AE59F7 /* PassengerAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerAnnotation.swift; sourceTree = "<group>"; };
 		0C2CFDCA2184F1C1003EFE75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				0CC4419721756F0F00BF19B0 /* CenterVCDelegate.swift */,
+				0C23241C21A1C0AE001F9BE3 /* Alertable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				0C26022721A0733900AE59F7 /* PassengerAnnotation.swift in Sources */,
 				0CC4418F2174048E00BF19B0 /* CircleView.swift in Sources */,
 				0C2602252197336E00AE59F7 /* DriverAnnotation.swift in Sources */,
+				0C23241D21A1C0AE001F9BE3 /* Alertable.swift in Sources */,
 				0CC4419B2179635600BF19B0 /* UIViewExt.swift in Sources */,
 				0C5463452193BC3600E5A640 /* UpdateService.swift in Sources */,
 				0CFDD741216A91310016373D /* HomeVC.swift in Sources */,
