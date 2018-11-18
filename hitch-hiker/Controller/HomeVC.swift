@@ -232,6 +232,7 @@ extension HomeVC: MKMapViewDelegate {
                 for mapItem in response!.mapItems {
                     self.matchingItems.append(mapItem as MKMapItem)
                     self.tableView.reloadData()
+                    self.shouldPresentLoadingView(false)
                 }
             }
         }
@@ -265,7 +266,10 @@ extension HomeVC: MKMapViewDelegate {
             }
             self.route = response.routes[0]
             
+            //self.mapView.add(self.route!.polyline)
             self.mapView.addOverlay(self.route.polyline)
+            
+            self.shouldPresentLoadingView(false)
         }
     }
 }
@@ -299,6 +303,7 @@ extension HomeVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == destinationTextField {
             performSearch()
+            shouldPresentLoadingView(true)
             view.endEditing(true)
         }
         return true
@@ -367,6 +372,9 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        self.shouldPresentLoadingView(true)
+        
         let passengerCoordinate = manager?.location?.coordinate
 //        let pasengerAnnotation = PassengerAnnotation(coordinate: passengerCoordinate!, key: currentUserId!)
         let pasengerAnnotation = PassengerAnnotation(coordinate: passengerCoordinate!,
@@ -388,6 +396,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         
         dropPinFor(placemark: selectedMapItem.placemark)
         
+        //should remove any existing polylines from previous search results selectedItem
         searchMapkitForResultsWithPolyline(forMapItem: selectedMapItem)
         
         animateTableView(shouldShow: false)
