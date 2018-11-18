@@ -324,6 +324,19 @@ extension HomeVC: UITextFieldDelegate {
         //added attribute clear while editing
         matchingItems = []
         tableView.reloadData()
+        
+        DataService.instance.REF_USERS.child((Auth.auth().currentUser?.uid)!)
+                                        .child("tripCoordinate").removeValue()
+        mapView.removeOverlays(mapView.overlays)
+        for annotation in mapView.annotations {
+            if let annotation = annotation as? MKPointAnnotation {
+                mapView.removeAnnotation(annotation)
+            }
+            else if annotation.isKind(of: PassengerAnnotation.self) {
+                mapView.removeAnnotation(annotation)
+            }
+        }
+        
         centerMapOnUserLocation()
         return true
     }
@@ -396,7 +409,6 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         
         dropPinFor(placemark: selectedMapItem.placemark)
         
-        //should remove any existing polylines from previous search results selectedItem
         searchMapkitForResultsWithPolyline(forMapItem: selectedMapItem)
         
         animateTableView(shouldShow: false)
